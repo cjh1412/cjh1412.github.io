@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  Junhui Chen — Academic Personal Website (English, single-file static site)
+  Open index.html in a browser to preview. Publish free on GitHub Pages.
+
+  ★ Site URL is set to https://cjh1412.github.io/ (GitHub username: cjh1412).
+    If you ever change your GitHub username, find-and-replace cjh1412.github.io accordingly.
+  ★ To add ORCID / Google Scholar / a clean CV: search "FILL-IN" and
+    uncomment + fill the relevant block.
+  Privacy note: this site is intentionally English-only with no Chinese name,
+  no photo, and Chinese search engines are blocked in robots.txt to keep a low
+  domestic profile. Anyone who has the link can still open it.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow" />
+
+<title>Junhui Chen — Coastal Geohazards · InSAR · Geospatial Machine Learning</title>
+<meta name="description" content="Junhui Chen, Ph.D. — geoscientist and geospatial data scientist working on marine/coastal geohazards, InSAR deformation monitoring, remote sensing, geospatial machine learning, and island/territorial spatial planning. Open to opportunities abroad: postdoctoral positions, research-scientist and applied R&D roles, and research collaboration." />
+<meta name="keywords" content="Junhui Chen, postdoc, postdoctoral, research scientist, geospatial data scientist, remote sensing scientist, GIS analyst, earth observation, geospatial machine learning, InSAR, marine geohazards, coastal hazard, landslide susceptibility, island spatial planning, geomorphology" />
+<meta name="author" content="Junhui Chen" />
+
+<!-- Canonical & social preview — set to cjh1412.github.io -->
+<link rel="canonical" href="https://cjh1412.github.io/" />
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="Junhui Chen — Coastal Geohazards · InSAR · Geospatial Machine Learning" />
+<meta property="og:description" content="Ph.D. researcher in coastal/marine geohazards, InSAR, and geospatial machine learning. Open to postdoctoral positions & research collaboration." />
+<meta property="og:url" content="https://cjh1412.github.io/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Junhui Chen — Academic Homepage" />
+<meta name="twitter:description" content="Coastal geohazards · InSAR · geospatial machine learning. Open to postdoc & collaboration." />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230e4f63'/><text x='32' y='44' font-size='30' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>JC</text></svg>" />
+
+<!-- Structured data so Google / Scholar can identify you -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Junhui Chen",
+  "jobTitle": "Researcher / Geospatial Data Scientist (marine & coastal geohazards)",
+  "description": "Geoscientist and geospatial data scientist; open to research and professional positions abroad and to research collaboration.",
+  "url": "https://cjh1412.github.io/",
+  "email": "mailto:cjh1412@gmail.com",
+  "sameAs": [
+    "https://scholar.google.com/citations?user=6H_tu3YAAAAJ",
+    "https://orcid.org/0000-0001-5448-9532"
+  ],
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Institute of Geographic Sciences and Natural Resources Research, Chinese Academy of Sciences" },
+    { "@type": "CollegeOrUniversity", "name": "Texas A&M University" },
+    { "@type": "CollegeOrUniversity", "name": "China University of Geosciences (Beijing)" }
+  ],
+  "knowsAbout": ["Coastal geohazards","InSAR deformation monitoring","Remote sensing","Geospatial machine learning","Island and territorial spatial planning","Rock mechanics","Landslide susceptibility","Marine spatial planning"]
+}
+</script>
+
+<style>
+  :root{
+    --maxw: 940px;
+    --primary:#0e4f63; --primary-2:#13657f; --accent:#1f9e8f; --accent-soft:#e7f4f1;
+    --ink:#16242b; --text:#2c3e46; --muted:#65777f;
+    --bg:#ffffff; --bg-2:#f5f8f9; --card:#ffffff; --border:#e2e9ec;
+    --shadow:0 1px 3px rgba(16,40,50,.06),0 10px 30px rgba(16,40,50,.06);
+    --radius:14px;
+  }
+  [data-theme="dark"]{
+    --primary:#7fd1c6; --primary-2:#9bdbd1; --accent:#36c0ad; --accent-soft:#11343a;
+    --ink:#eef4f5; --text:#ccd9dd; --muted:#8aa0a7;
+    --bg:#0c1517; --bg-2:#10201f; --card:#13242a; --border:#22383f;
+    --shadow:0 1px 3px rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.28);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:78px;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.7; font-size:16px; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--primary-2); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px;}
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--bg) 88%, transparent);
+    backdrop-filter:saturate(150%) blur(10px); border-bottom:1px solid var(--border);
+  }
+  .nav-inner{display:flex; align-items:center; gap:14px; height:60px;}
+  .brand{font-weight:700; color:var(--ink); font-size:1.05rem; white-space:nowrap;}
+  .brand .dot{color:var(--accent);}
+  nav.links{display:flex; gap:4px; margin-left:auto; overflow-x:auto;}
+  nav.links a{color:var(--muted); padding:7px 11px; border-radius:8px; font-size:.92rem; white-space:nowrap;}
+  nav.links a:hover{color:var(--ink); background:var(--bg-2); text-decoration:none;}
+  .iconbtn{border:1px solid var(--border); background:var(--card); color:var(--text); border-radius:9px; padding:7px 11px; cursor:pointer; font-size:.95rem; font-weight:600; white-space:nowrap;}
+  .iconbtn:hover{border-color:var(--accent); color:var(--primary-2);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(1100px 380px at 85% -10%, color-mix(in srgb,var(--accent) 15%, transparent), transparent 60%),
+      linear-gradient(180deg, var(--bg-2), var(--bg));
+    border-bottom:1px solid var(--border);
+    padding:54px 0 44px;
+  }
+  .hero h1{margin:0; font-size:2.6rem; color:var(--ink); letter-spacing:.2px;}
+  .role{font-size:1.15rem; color:var(--primary-2); font-weight:600; margin:10px 0 2px;}
+  .affil{color:var(--muted); margin:2px 0;}
+  .tagline{margin:14px 0 0; color:var(--text); max-width:680px; font-size:1.05rem;}
+  .badge-open{
+    display:inline-flex; align-items:center; gap:8px; margin-top:18px;
+    background:var(--accent-soft); color:var(--primary); border:1px solid color-mix(in srgb,var(--accent) 40%, transparent);
+    padding:9px 15px; border-radius:999px; font-weight:600; font-size:.96rem;
+  }
+  .badge-open::before{content:""; width:9px; height:9px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%, transparent);}70%{box-shadow:0 0 0 10px transparent;}100%{box-shadow:0 0 0 0 transparent;}}
+  .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px;}
+  .btn{display:inline-flex; align-items:center; gap:7px; padding:10px 18px; border-radius:10px; font-weight:600; font-size:.96rem; border:1px solid var(--border); background:var(--card); color:var(--text);}
+  .btn:hover{text-decoration:none; border-color:var(--accent);}
+  .btn.primary{background:var(--primary); color:#fff; border-color:var(--primary);}
+  .btn.primary:hover{background:var(--primary-2); border-color:var(--primary-2);}
+
+  /* ---------- Highlights ---------- */
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:34px;}
+  .stat{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow);}
+  .stat b{display:block; color:var(--primary-2); font-size:1.18rem;}
+  .stat span{color:var(--muted); font-size:.9rem;}
+
+  /* ---------- Sections ---------- */
+  section{padding:44px 0; border-bottom:1px solid var(--border);}
+  h2.sec{font-size:1.5rem; color:var(--ink); margin:0 0 6px; display:flex; align-items:center; gap:10px;}
+  h2.sec::before{content:""; width:6px; height:24px; border-radius:4px; background:linear-gradient(var(--accent),var(--primary));}
+  .sec-sub{color:var(--muted); margin:0 0 22px; font-size:.95rem;}
+  .prose p{margin:0 0 12px;}
+
+  /* research cards */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px;}
+  .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);}
+  .card h3{margin:0 0 6px; font-size:1.05rem; color:var(--ink);}
+  .card p{margin:0; color:var(--muted); font-size:.92rem;}
+  .card .ic{font-size:1.4rem;}
+
+  /* timeline */
+  .tl{position:relative; padding-left:26px;}
+  .tl::before{content:""; position:absolute; left:7px; top:6px; bottom:6px; width:2px; background:var(--border);}
+  .tl-item{position:relative; padding:0 0 22px;}
+  .tl-item::before{content:""; position:absolute; left:-23px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:3px solid var(--bg);}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-top{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:baseline;}
+  .tl-title{font-weight:700; color:var(--ink);}
+  .tl-when{color:var(--muted); font-size:.88rem; white-space:nowrap;}
+  .tl-org{color:var(--primary-2); font-weight:600; font-size:.96rem;}
+  .tl-item ul{margin:8px 0 0; padding-left:18px; color:var(--text);}
+  .tl-item li{margin:3px 0; font-size:.94rem;}
+
+  /* publications */
+  .pub{padding:16px 0; border-top:1px solid var(--border);}
+  .pub:first-of-type{border-top:none;}
+  .pub .tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:7px;}
+  .tag{font-size:.74rem; font-weight:700; padding:3px 9px; border-radius:999px; letter-spacing:.3px;}
+  .tag.venue{background:var(--accent-soft); color:var(--primary);}
+  .tag.if{background:#eef3f6; color:#3a5563;}
+  .tag.top{background:#fff2d8; color:#9a6b00;}
+  .tag.rev{background:#fde9e7; color:#b23b2e;}
+  [data-theme="dark"] .tag.if{background:#1a2c33; color:#9fb6bf;}
+  [data-theme="dark"] .tag.top{background:#3a2e10; color:#e7c069;}
+  [data-theme="dark"] .tag.rev{background:#3a1f1c; color:#e8a59c;}
+  .pub .cite{margin:0; color:var(--text); font-size:.96rem;}
+  .pub .cite em{color:var(--muted);}
+  .pub .me{font-weight:800; color:var(--ink);}
+  .pub .doi{display:inline-block; margin-top:6px; font-size:.86rem; font-weight:600;}
+  .grp-title{font-size:1.02rem; color:var(--primary-2); font-weight:700; margin:26px 0 4px;}
+  .grp-title:first-of-type{margin-top:6px;}
+
+  /* projects */
+  .proj{background:var(--card); border:1px solid var(--border); border-left:4px solid var(--accent); border-radius:12px; padding:16px 18px; margin-bottom:14px; box-shadow:var(--shadow);}
+  .proj-top{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:baseline;}
+  .proj .role{font-size:.78rem; font-weight:800; padding:3px 10px; border-radius:999px; background:var(--primary); color:#fff;}
+  .proj .role.part{background:#7d8e95;}
+  .proj h3{margin:6px 0 2px; font-size:1.02rem; color:var(--ink);}
+  .proj .fund{color:var(--primary-2); font-size:.9rem; font-weight:600;}
+  .proj .when{color:var(--muted); font-size:.86rem; white-space:nowrap;}
+
+  /* honors & skills */
+  .chips{display:flex; flex-wrap:wrap; gap:9px;}
+  .chip{background:var(--card); border:1px solid var(--border); border-radius:999px; padding:7px 14px; font-size:.9rem; color:var(--text);}
+  .chip b{color:var(--primary-2);}
+  .skillgrp{margin:0 0 14px;}
+  .skillgrp h4{margin:0 0 8px; color:var(--ink); font-size:1rem;}
+
+  /* contact */
+  .contact-card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px 26px; margin-top:6px;}
+  .contact-grid .row{display:flex; gap:10px; align-items:flex-start;}
+  .contact-grid .k{color:var(--muted); min-width:92px; font-size:.9rem; padding-top:1px;}
+  .contact-grid .v{color:var(--ink); font-weight:500;}
+  .callout{margin:0 0 18px; padding:14px 16px; border-radius:12px; background:var(--accent-soft); border:1px solid color-mix(in srgb,var(--accent) 35%, transparent); color:var(--primary); font-weight:600;}
+
+  footer{padding:26px 0 40px; color:var(--muted); font-size:.86rem; text-align:center;}
+
+  @media (max-width:680px){
+    .hero h1{font-size:2.05rem;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+
+<body>
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <span class="brand">Junhui&nbsp;Chen<span class="dot">.</span></span>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#honors">Honors</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="iconbtn" data-theme-toggle aria-label="Toggle dark mode">🌙</button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero">
+  <div class="wrap">
+    <h1>Junhui Chen</h1>
+    <div class="role">Ph.D. · Geoscientist — Coastal Geohazards &amp; Geospatial Data Science</div>
+    <div class="affil">Island Research Center, Ministry of Natural Resources · Fujian, China</div>
+    <p class="tagline">Marine &amp; coastal geohazards · InSAR deformation monitoring · Island &amp; territorial spatial planning · Geospatial machine learning</p>
+    <div class="badge-open">Open to opportunities abroad &amp; research collaboration</div>
+    <div class="cta">
+      <a class="btn primary" href="mailto:cjh1412@gmail.com">✉ Email me</a>
+      <a class="btn" href="assets/Junhui-Chen-CV.pdf" target="_blank" rel="noopener">📄 Download CV</a>
+      <a class="btn" href="https://scholar.google.com/citations?user=6H_tu3YAAAAJ&amp;hl=en" target="_blank" rel="noopener">🎓 Google Scholar</a>
+      <a class="btn" href="https://orcid.org/0000-0001-5448-9532" target="_blank" rel="noopener">🆔 ORCID</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>Ph.D.</b><span>CAS · joint training at Texas A&amp;M</span></div>
+      <div class="stat"><b>7+</b><span>first-author SCI papers (+5 under review)</span></div>
+      <div class="stat"><b>3</b><span>research grants as PI</span></div>
+      <div class="stat"><b>2022</b><span>Provincial High-level Talent</span></div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <h2 class="sec">About</h2>
+    <div class="prose">
+      <p>I am a researcher at the Island Research Center, Ministry of Natural Resources (Fujian, China). I received my Ph.D. in Cartography and Geographic Information Systems from the Institute of Geographic Sciences and Natural Resources Research, Chinese Academy of Sciences, including a joint-training period at Texas A&amp;M University funded by the China Scholarship Council, and my B.Sc. in Geology from China University of Geosciences (Beijing).</p>
+      <p>My research bridges <strong>marine / island spatial planning</strong> and <strong>quantitative geohazard science</strong>. I combine remote sensing, InSAR surface-deformation monitoring, and machine learning to assess coastal and island hazards and to support territorial spatial planning and disaster risk reduction. My current work focuses on <strong>refined assessment of coastal geo-environmental stability</strong>, integrating multi-source remote sensing and InSAR with machine-learning models.</p>
+      <p>I am open to <strong>opportunities abroad</strong> — postdoctoral positions, research-scientist roles, and applied R&amp;D in geospatial science — as well as <strong>research collaborations</strong>. If my work resonates with yours, I would be glad to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- ===================== RESEARCH ===================== -->
+  <section id="research">
+    <h2 class="sec">Research Interests</h2>
+    <p class="sec-sub">Where coastal / marine science meets data-driven hazard assessment.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ic">🏝️</div>
+        <h3>Island &amp; Territorial Spatial Planning</h3>
+        <p>Uninhabited-island function zoning, protection &amp; utilization planning, sea-use evaluation, and policy support.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🌊</div>
+        <h3>Coastal Hazard &amp; Risk Assessment</h3>
+        <p>Geohazard susceptibility, hazard and risk assessment for coastal zones and islands using multi-source data.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🛰️</div>
+        <h3>InSAR Deformation Monitoring</h3>
+        <p>D-/PS-/SBAS-/DS-InSAR for landslides, reclamation areas, and post-eruption island stability.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🤖</div>
+        <h3>Geospatial Machine Learning</h3>
+        <p>Random forest, SVM and neural networks for shipwreck susceptibility, DEM error, and susceptibility mapping.</p>
+      </div>
+      <div class="card">
+        <div class="ic">🪨</div>
+        <h3>Rock Mechanics &amp; Microfracture</h3>
+        <p>Shale anisotropy, micro-/nano-fracture characterization, and granite fracture evolution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PUBLICATIONS ===================== -->
+  <section id="publications">
+    <h2 class="sec">Selected Publications</h2>
+    <p class="sec-sub">Selected peer-reviewed work; my name is highlighted.</p>
+
+    <div class="grp-title">Under Review</div>
+    <div class="pub">
+      <div class="tags"><span class="tag rev">Under Review</span><span class="tag if">sole author</span></div>
+      <p class="cite"><span class="me">Chen J</span>. Persistent subsidence of newly reclaimed coastal land: two-track InSAR evidence for a ground-readiness gap in land-use governance.</p>
+    </div>
+    <div class="pub">
+      <div class="tags"><span class="tag rev">Under Review</span><span class="tag if">sole author</span></div>
+      <p class="cite"><span class="me">Chen J</span>. Evolution and interdisciplinary integration of ocean health metrics: a bibliometric and information theoretic approach.</p>
+    </div>
+    <div class="pub">
+      <div class="tags"><span class="tag rev">Under Review</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Tang F, Lin H, Huang B, Lin X. Post-Eruptive Crustal Relaxation and Stability of Tongatapu Island (2022–2025): Insights from Physics-Based InSAR Clustering.</p>
+    </div>
+    <div class="pub">
+      <div class="tags"><span class="tag rev">Under Review</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Li S. From Resilience Debt to Regime Shift: The Synergistic Collapse of an Island's Eco-geomorphology (1987–2026).</p>
+    </div>
+    <div class="pub">
+      <div class="tags"><span class="tag rev">Under Review</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Tang F, Lin H. Model-ready shipwreck susceptibility dataset for Chinese seas.</p>
+    </div>
+
+    <div class="grp-title">Journal Articles</div>
+
+    <div class="pub">
+      <div class="tags"><span class="tag venue">npj Heritage Science · 2026</span><span class="tag if">IF 3.9</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Tang F, Lin H, Chen Y, Chen Y, Lin P, Huang B, Lin X. Geospatial predictive modelling of anthropogenic and natural shipwreck risks using multi-source environmental data. <em>npj Heritage Science</em>, 2026.</p>
+      <a class="doi" href="https://doi.org/10.1038/s40494-026-02687-1" target="_blank" rel="noopener">doi.org/10.1038/s40494-026-02687-1 ↗</a>
+    </div>
+
+    <div class="pub">
+      <div class="tags"><span class="tag venue">Remote Sensing · 2026</span><span class="tag if">IF 4.1</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Tang F, Lin H, Huang B, Lin X. Spatial Heterogeneity and Drivers of Vertical Error in Global DEMs: An Explainable Machine Learning Approach in Complex Subtropical Coastal Zones. <em>Remote Sensing</em>, 2026, 18(8): 1125.</p>
+      <a class="doi" href="https://doi.org/10.3390/rs18081125" target="_blank" rel="noopener">doi.org/10.3390/rs18081125 ↗</a>
+    </div>
+
+    <div class="pub">
+      <div class="tags"><span class="tag venue">J. of Archaeological Science · 2026</span><span class="tag top">TOP</span><span class="tag if">IF 2.5</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Tang F, Lin H, Chen Y, Chen Y, Lin P, Huang B, Lin X. Application of Remote Sensing and Machine Learning Algorithms for Shipwreck Susceptibility Mapping in China. <em>Journal of Archaeological Science</em>, 2026, 185: 106429.</p>
+      <a class="doi" href="https://doi.org/10.1016/j.jas.2025.106429" target="_blank" rel="noopener">doi.org/10.1016/j.jas.2025.106429 ↗</a>
+    </div>
+
+    <div class="pub">
+      <div class="tags"><span class="tag venue">Frontiers in Marine Science · 2025</span><span class="tag if">IF 3.0</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Tang F, Lin H, Huang B, Lin X. Mapping the research framework and key trends of coral reefs in the South China Sea. <em>Frontiers in Marine Science</em>, 2025, 12: 1619275.</p>
+      <a class="doi" href="https://doi.org/10.3389/fmars.2025.1619275" target="_blank" rel="noopener">doi.org/10.3389/fmars.2025.1619275 ↗</a>
+    </div>
+
+    <div class="pub">
+      <div class="tags"><span class="tag venue">Heliyon · 2024</span><span class="tag if">IF 3.4</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Tang F. Visualized analysis of microscale rock mechanism research: A bibliometric data mining approach. <em>Heliyon</em>, 2024, 10(20): e39160.</p>
+      <a class="doi" href="https://doi.org/10.1016/j.heliyon.2024.e39160" target="_blank" rel="noopener">doi.org/10.1016/j.heliyon.2024.e39160 ↗</a>
+    </div>
+
+    <div class="pub">
+      <div class="tags"><span class="tag venue">Springer SSGG · 2024</span><span class="tag if">EI</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Tang F. Analyzing Contact Heterogeneity and Its Geological Implications in Granite Uniaxial Compression Tests. <em>Springer Series in Geomechanics and Geoengineering</em>, 2024.</p>
+    </div>
+
+    <div class="pub">
+      <div class="tags"><span class="tag venue">J. Physics: Conf. Series · 2023</span><span class="tag if">EI</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Feng A. The Effect of Thermal Discharging on the Island Ecosystem in China: Current Knowledge and Future Challenges. <em>Journal of Physics: Conference Series</em>, 2023, 2468(1), IOP Publishing.</p>
+    </div>
+
+    <div class="pub">
+      <div class="tags"><span class="tag venue">J. Petroleum Sci. &amp; Eng. · 2021</span><span class="tag top">TOP</span><span class="tag if">IF 4.3</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Lan H, Macciotta R, et al. Microfracture characterization of shale constrained by mineralogy and bedding. <em>Journal of Petroleum Science and Engineering</em>, 2021, 108456.</p>
+      <a class="doi" href="https://doi.org/10.1016/j.petrol.2021.108456" target="_blank" rel="noopener">doi.org/10.1016/j.petrol.2021.108456 ↗</a>
+    </div>
+
+    <div class="pub">
+      <div class="tags"><span class="tag venue">Scientific Reports · 2019</span><span class="tag if">IF 4.0</span></div>
+      <p class="cite">Lan H, <span class="me">Chen J</span>, Macciotta R. Universal confined tensile strength of intact rock. <em>Scientific Reports</em>, 2019, 9(1): 6170.</p>
+      <a class="doi" href="https://doi.org/10.1038/s41598-019-42698-6" target="_blank" rel="noopener">doi.org/10.1038/s41598-019-42698-6 ↗</a>
+    </div>
+
+    <div class="pub">
+      <div class="tags"><span class="tag venue">Engineering Geology · 2018</span><span class="tag if">IF 3.9</span></div>
+      <p class="cite"><span class="me">Chen J</span>, Lan H, Macciotta R, et al. Anisotropy rather than transverse isotropy in Longmaxi shale and the potential role of tectonic stress. <em>Engineering Geology</em>, 2018, 247: 38–47.</p>
+      <a class="doi" href="https://doi.org/10.1016/j.enggeo.2018.10.018" target="_blank" rel="noopener">doi.org/10.1016/j.enggeo.2018.10.018 ↗</a>
+    </div>
+
+    <div class="pub">
+      <div class="tags"><span class="tag venue">J. of Mountain Science · 2020</span><span class="tag if">IF 2.5</span></div>
+      <p class="cite">Zhang Y, Lan H, Li L, Wu Y, <span class="me">Chen J</span>, Tian N. Optimizing the frequency ratio method for landslide susceptibility assessment: A case study of the Caiyuan Basin in the southeast mountainous area of China. <em>Journal of Mountain Science</em>, 2020, 17(2): 340–357.</p>
+    </div>
+
+    <div class="grp-title">Selected Articles in Chinese</div>
+    <div class="pub">
+      <p class="cite">Zhang Y, Lan H, Li L, Wu Y, Chen Z, <span class="me">Chen J</span>. Refined geohazard assessment integrating statistical and physical models: a case study of Longshan community, Fujian. <em>Journal of Engineering Geology</em>, 2019, 27(3): 608–622. (in Chinese)</p>
+    </div>
+    <div class="pub">
+      <p class="cite">Lan H, <span class="me">Chen J</span>, Wu Y. Spatial distribution of micro-/nano-scale fractures in gas-bearing shale before and after triaxial compression. <em>Journal of Engineering Geology</em>, 2018, 26(1): 24–35. (in Chinese)</p>
+    </div>
+    <div class="pub">
+      <p class="cite">Lan H, Wu Y, Li Q, <span class="me">Chen J</span>, Zhao X. 3D fracture-network reconstruction and fractal analysis of Longmaxi shale. <em>Journal of Engineering Geology</em>, 2017, 25(6): 1557–1565. (in Chinese)</p>
+    </div>
+    <div class="pub">
+      <p class="cite">Wu Y, Lan H, Gao X, Wang W, <span class="me">Chen J</span>, Hao Z. Relationship between fracture volume density and acoustic properties of downhole shale cores in the Fuling area. <em>Chinese Journal of Geophysics</em>, 2016, 59(10): 3891–3900. (in Chinese)</p>
+    </div>
+  </section>
+
+  <!-- ===================== PROJECTS ===================== -->
+  <section id="projects">
+    <h2 class="sec">Funded Projects</h2>
+    <p class="sec-sub">As Principal Investigator and key participant.</p>
+
+    <div class="proj">
+      <div class="proj-top"><span class="role">PI</span><span class="when">2026 – 2029</span></div>
+      <h3>Refined assessment of geo-environmental stability in typical Fujian coastal zones based on multi-source remote sensing fusion</h3>
+      <div class="fund">Fujian Natural Science Foundation — General Program</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top"><span class="role">PI</span><span class="when">2023 – 2024</span></div>
+      <h3>Compilation of guidelines for delineating underwater cultural heritage reserves</h3>
+      <div class="fund">National Cultural Heritage Administration</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top"><span class="role">PI</span><span class="when">2022 – 2025</span></div>
+      <h3>Influence of mineral mechanical properties on fracture evolution in granite under uniaxial compression</h3>
+      <div class="fund">Fujian Natural Science Foundation — Youth Innovation Program</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top"><span class="role part">Key participant</span><span class="when">2020 – 2022</span></div>
+      <h3>Ecological protection services and decision support for sea areas and islands</h3>
+      <div class="fund">Ministry of Natural Resources</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top"><span class="role part">Participant</span><span class="when">2014 – 2018</span></div>
+      <h3>Fundamental theories and key technologies for shale gas exploration and development</h3>
+      <div class="fund">CAS Strategic Priority Research Program</div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section id="experience">
+    <h2 class="sec">Experience</h2>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-top"><span class="tl-title">Assistant → Associate Researcher</span><span class="tl-when">2020 – present</span></div>
+        <div class="tl-org">Island Research Center, Ministry of Natural Resources · Fujian</div>
+        <ul>
+          <li>Territorial spatial planning for uninhabited islands at provincial (dominant-function zoning of 2,000+ islands, adopted into provincial plans), municipal, and single-island levels.</li>
+          <li>Coastal geohazard &amp; deformation research: susceptibility / risk assessment with remote sensing &amp; ML; D-/PS-/SBAS-InSAR monitoring (landslides, reclamation areas; post-eruption Tongatapu, 2022).</li>
+          <li>Machine-learning shipwreck susceptibility mapping for Chinese seas (information value, weights of evidence, neural networks, SVM, random forest).</li>
+          <li>Policy &amp; technical support: contributions to island-protection legislation, pilot schemes for legacy issues of uninhabited islands, and national "Beautiful Islands" technical review.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-top"><span class="tl-title">Secondment — Sea Area &amp; Island Management Division</span><span class="tl-when">2023.7 – 2024.1</span></div>
+        <div class="tl-org">Municipal Bureau of Natural Resources and Planning, Xiamen</div>
+        <ul>
+          <li>Oversight of new-project sea use, mainland natural shoreline, and legacy reclamation issues; pre-research on transferring sea-area use rights via tender / auction / listing.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EDUCATION ===================== -->
+  <section id="education">
+    <h2 class="sec">Education</h2>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-top"><span class="tl-title">Ph.D., Cartography &amp; Geographic Information Systems</span><span class="tl-when">2015 – 2020</span></div>
+        <div class="tl-org">Institute of Geographic Sciences and Natural Resources Research, Chinese Academy of Sciences · Beijing</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-top"><span class="tl-title">Joint-training Ph.D. student (CSC-funded)</span><span class="tl-when">2019 – 2020</span></div>
+        <div class="tl-org">Texas A&amp;M University · Texas, USA</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-top"><span class="tl-title">B.Sc., Geology</span><span class="tl-when">2011 – 2015</span></div>
+        <div class="tl-org">China University of Geosciences (Beijing)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HONORS ===================== -->
+  <section id="honors">
+    <h2 class="sec">Honors &amp; Service</h2>
+    <div class="chips">
+      <span class="chip"><b>Provincial High-level Talent</b> (Fujian) · 2022</span>
+      <span class="chip">Pingtan Mid-/High-level Talent</span>
+      <span class="chip">Keynote speaker, 12th Common Homeland Forum</span>
+      <span class="chip">AGU Fall Meeting Student Grant · 2017</span>
+    </div>
+  </section>
+
+  <!-- ===================== SKILLS ===================== -->
+  <section id="skills">
+    <h2 class="sec">Skills</h2>
+    <div class="skillgrp">
+      <h4>GIS &amp; Remote Sensing</h4>
+      <div class="chips"><span class="chip">ArcGIS</span><span class="chip">Remote sensing interpretation</span><span class="chip">GoCAD (3D geo-modeling)</span></div>
+    </div>
+    <div class="skillgrp">
+      <h4>InSAR</h4>
+      <div class="chips"><span class="chip">D-InSAR</span><span class="chip">PS-InSAR</span><span class="chip">SBAS-InSAR</span><span class="chip">DS-InSAR</span></div>
+    </div>
+    <div class="skillgrp">
+      <h4>Programming &amp; Machine Learning</h4>
+      <div class="chips"><span class="chip">Python</span><span class="chip">Random Forest</span><span class="chip">SVM</span><span class="chip">Neural Networks</span></div>
+    </div>
+    <div class="skillgrp">
+      <h4>Rock Mechanics Testing</h4>
+      <div class="chips"><span class="chip">DIC</span><span class="chip">Uniaxial compression</span><span class="chip">UDEC</span></div>
+    </div>
+    <div class="skillgrp">
+      <h4>Languages</h4>
+      <div class="chips"><span class="chip">Chinese (native)</span><span class="chip">English (academic — AGU / ISRM presentations, joint Ph.D. in the US)</span></div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" style="border-bottom:none;">
+    <h2 class="sec">Contact</h2>
+    <div class="contact-card">
+      <p class="callout">🔍 I am actively exploring <strong>opportunities abroad</strong> — postdoctoral positions, research-scientist roles, and applied R&amp;D in industry — as well as research collaborations, across coastal / marine geohazards, InSAR &amp; remote sensing, geospatial machine learning, and GIS / spatial planning. Please feel free to reach out.</p>
+      <div class="contact-grid">
+        <div class="row"><span class="k">Email</span><span class="v"><a href="mailto:cjh1412@gmail.com">cjh1412@gmail.com</a></span></div>
+        <div class="row"><span class="k">Affiliation</span><span class="v">Island Research Center, Ministry of Natural Resources</span></div>
+        <div class="row"><span class="k">Location</span><span class="v">Fujian, China</span></div>
+        <div class="row"><span class="k">Google Scholar</span><span class="v"><a href="https://scholar.google.com/citations?user=6H_tu3YAAAAJ&amp;hl=en" target="_blank" rel="noopener">View profile ↗</a></span></div>
+        <div class="row"><span class="k">ORCID</span><span class="v"><a href="https://orcid.org/0000-0001-5448-9532" target="_blank" rel="noopener">0000-0001-5448-9532</a></span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    © <span id="year">2026</span> Junhui Chen · Last updated June 2026 · Built as a free static site.
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var root = document.documentElement;
+    function setTheme(t){
+      if(t === 'dark'){ root.setAttribute('data-theme','dark'); } else { root.removeAttribute('data-theme'); }
+      try{ localStorage.setItem('theme', t); }catch(e){}
+      document.querySelectorAll('[data-theme-toggle]').forEach(function(b){ b.textContent = (t === 'dark') ? '☀️' : '🌙'; });
+    }
+    var savedTheme = null;
+    try{ savedTheme = localStorage.getItem('theme'); }catch(e){}
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(b){
+      b.addEventListener('click', function(){ setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); });
+    });
+    var y = document.getElementById('year'); if(y){ y.textContent = new Date().getFullYear(); }
+  })();
+</script>
+</body>
+</html>

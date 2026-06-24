@@ -1,0 +1,31 @@
+# Allow major international search engines (so overseas recruiters can find you)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block Chinese search engines to keep a low domestic profile
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: Sogou web spider
+Disallow: /
+
+User-agent: 360Spider
+Disallow: /
+
+User-agent: HaoSouSpider
+Disallow: /
+
+User-agent: YisouSpider
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# Everyone else: allowed
+User-agent: *
+Allow: /
+
+Sitemap: https://cjh1412.github.io/sitemap.xml
